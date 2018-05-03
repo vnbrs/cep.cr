@@ -9,9 +9,9 @@ module Cep
       response = HTTP::Client.get("#{BASE_URL}/v1/cep/#{cep}")
 
       if response.status_code == 200
-        raw_address = JSON.parse(response.body)
+        return JSON.parse(response.body)
       else
-
+        # TODO raise exception
       end
     end
   end
