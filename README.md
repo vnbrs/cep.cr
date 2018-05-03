@@ -16,13 +16,10 @@ dependencies:
 
 ```crystal
 require "cep"
+
+Cep::Address.new "80210130"
+=> ...
 ```
-
-TODO: Write usage instructions here
-
-## Development
-
-TODO: Write development instructions here
 
 ## Contributing
 
