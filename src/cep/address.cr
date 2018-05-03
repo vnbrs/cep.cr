@@ -1,6 +1,6 @@
 module Cep
   class Address
-    property bairro, cidade, logradouro, codigo_ibge, uf, estado : String = ""
+    property neighborhood, city, address, ibge_code, state, state_abbreviation : String = ""
 
     def initialize(cep)
       cep = cep.delete "^0-9"
