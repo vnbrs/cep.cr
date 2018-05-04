@@ -23,7 +23,7 @@ CEP::Address.find "8s0t2a1r0130" # sanitizes the data     🛀🏼
 => #<CEP::Address:0x10e1b83c0 @cep="80210130", @neighborhood="Jardim Botânico", @city="Curitiba", @street="Rua José Ananias Mauad", @state="Paraná", @state_abbreviation="PR">
 
 CEP::Address.find "12345678"     # in unideal scenarios.  😨
-The API responded with 404 (CEP::ApiRequestError)
+=> The API responded with 404 (CEP::ApiRequestError)
 ```
 
 ## Contributing
