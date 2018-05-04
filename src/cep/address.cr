@@ -1,32 +1,20 @@
 require "./service"
+require "json"
 
 module CEP
   class Address
-    property \
-      cep = "",
-      neighborhood = "",
-      city = "",
-      street = "",
-      state = "",
-      state_abbreviation = ""
+    JSON.mapping(
+      cep:          {key: "cep",        type: String},
+      neighborhood: {key: "bairro",     type: String},
+      city:         {key: "cidade",     type: String},
+      street:       {key: "logradouro", type: String},
+      state:        {key: "estado",     type: String},
+    )
 
     def self.find(cep)
       cep = CEP::Sanitizer.process cep
       response = CEP::Service.get(cep)
-
-      address = Address.new
-      address.fill_from response
-
-      address
-    end
-
-    def fill_from(response)
-      self.cep = response["cep"].as_s
-      self.neighborhood = response["bairro"].as_s
-      self.city = response["cidade"].as_s
-      self.street = response["logradouro"].as_s
-      self.state = response["estado_info"]["nome"].as_s
-      self.state_abbreviation = response["estado"].as_s
+      Address.from_json response
     end
   end
 end
