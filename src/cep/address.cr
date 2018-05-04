@@ -1,8 +1,8 @@
-require "service"
+require "./service"
 
 module Cep
   class Address
-    property neighborhood, city, address, state, state_abbreviation : String = ""
+    property neighborhood, city, address, state, state_abbreviation
 
     def initialize(cep)
       cep = cep.delete "^0-9"
