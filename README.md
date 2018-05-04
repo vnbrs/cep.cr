@@ -1,6 +1,6 @@
 # cep.cr : the Brazilian way
 
-cep.cr is an awesome Crystal library to fetch Brazilian post codes easily.
+cep.cr is an awesome Crystal library to fetch Brazilian post codes easily using Postmon API.
 
 ## Installation
 
@@ -19,6 +19,7 @@ require "cep"
 
 CEP::Address.find "80210130"     # fetch addresses easily 😃
 CEP::Address.find 80210130       # works with numerics    🤓
+CEP::Address.find "80210-130"    # works with formats     🚧
 CEP::Address.find "8s0t2a1r0130" # sanitizes the data     🛀🏼
 => #<CEP::Address:0x10e1b83c0 @cep="80210130", @neighborhood="Jardim Botânico", @city="Curitiba", @street="Rua José Ananias Mauad", @state="Paraná", @state_abbreviation="PR">
 
