@@ -1,3 +1,3 @@
 require "./cep/*"
 
-module Cep; end
+module CEP; end

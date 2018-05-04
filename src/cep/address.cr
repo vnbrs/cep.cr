@@ -1,21 +1,32 @@
 require "./service"
 
-module Cep
+module CEP
   class Address
-    property neighborhood, city, address, state, state_abbreviation
+    property \
+      cep = "",
+      neighborhood = "",
+      city = "",
+      street = "",
+      state = "",
+      state_abbreviation = ""
 
-    def initialize(cep)
-      cep = cep.delete "^0-9"
-      response = Cep::Service.get(cep)
-      fill_from response
+    def self.find(cep)
+      cep = CEP::Sanitizer.process cep
+      response = CEP::Service.get(cep)
+
+      address = Address.new
+      address.fill_from response
+
+      address
     end
 
-    private def fill_from(response)
-      neighborhood = response["bairro"]
-      city = response["cidade"]
-      address = response["logradouro"]
-      state = response["estado_info"]["nome"]
-      state_abbreviation = response["estado"]
+    def fill_from(response)
+      self.cep = response["cep"].as_s
+      self.neighborhood = response["bairro"].as_s
+      self.city = response["cidade"].as_s
+      self.street = response["logradouro"].as_s
+      self.state = response["estado_info"]["nome"].as_s
+      self.state_abbreviation = response["estado"].as_s
     end
   end
 end
