@@ -1,6 +1,6 @@
 module CEP
-  class Sanitizer
-    def self.process(cep)
+  module Sanitizer
+    def sanitize(cep)
       cep.to_s.delete("^0-9")[0..7]
     end
   end
