@@ -3,10 +3,10 @@ require "json"
 require "./exceptions"
 
 module CEP
-  class Service
+  module Service
     BASE_URL = "http://api.postmon.com.br"
 
-    def self.get(cep)
+    def get(cep)
       response = HTTP::Client.get("#{BASE_URL}/v1/cep/#{cep}")
 
       return JSON.parse(response.body).to_json if response.status_code == 200

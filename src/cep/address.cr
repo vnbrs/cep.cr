@@ -1,8 +1,12 @@
 require "./service"
+require "./sanitizer"
 require "json"
 
 module CEP
-  class Address
+  struct Address
+    extend Sanitizer
+    extend Service
+
     JSON.mapping(
       cep:          {key: "cep",        type: String},
       neighborhood: {key: "bairro",     type: String},
@@ -12,8 +16,8 @@ module CEP
     )
 
     def self.find(cep)
-      cep = CEP::Sanitizer.process cep
-      response = CEP::Service.get(cep)
+      sanitize cep
+      response = get cep
       Address.from_json response
     end
   end
