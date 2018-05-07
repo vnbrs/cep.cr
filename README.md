@@ -1,6 +1,6 @@
 # cep.cr : the Brazilian way [![Build Status](https://travis-ci.org/vnbrs/cep.cr.svg?branch=master)](https://travis-ci.org/vnbrs/cep.cr)
 
-> cep.cr is an awesome Crystal library to fetch Brazilian post codes easily using Postmon API.
+cep.cr is the dependencyless Crystal library to fetch Brazilian post codes easily using Postmon API.
 
 ## Installation
 
